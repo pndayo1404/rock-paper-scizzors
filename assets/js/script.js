@@ -14,10 +14,12 @@ function getComputerChoice(computerChoice){
     }
     return computerChoice;
 }
-
+const buttons = document.querySelectorAll('button');
 function getPlayerChoice(){
-    let playerChoice = prompt("Enter your choice: ").toLowerCase();
-    return playerChoice;
+    buttons.forEach(button => button.addEventListener('click', function(e){
+        let playerChoice = this.className;
+        return playerChoice;
+    }))
 }
 
 function decideWinner(computerChoice, playerChoice){
@@ -63,15 +65,8 @@ function game(){
     computerChoice = getComputerChoice(computerChoice);
     console.log(computerChoice);
     let playerChoice = getPlayerChoice();
-    console.log(playerChoice);
+    // console.log(playerChoice);
     result = decideWinner(computerChoice, playerChoice);
-    console.log(result);
 }
 
-function loopGame(){
-    for (let i = 0; i<5; i++){
-        game();
-    }
-}
-
-loopGame();
+game();
