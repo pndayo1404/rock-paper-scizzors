@@ -1,0 +1,7 @@
+.resetGame{
+    display: none;
+}
+.displayScore{
+    display: flex;
+    gap: 32px;
+}
