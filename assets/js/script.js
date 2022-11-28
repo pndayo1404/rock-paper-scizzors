@@ -1,6 +1,6 @@
 console.log("Hello world");
 
-function getComputerChoice(computerChoice){
+function getComputerChoice(computerChoice){ //Get computer choices through Math.random
     let choice = Math.floor(Math.random() * 3);
     
     if (choice == 0){
@@ -14,15 +14,9 @@ function getComputerChoice(computerChoice){
     }
     return computerChoice;
 }
-const buttons = document.querySelectorAll('button');
-function getPlayerChoice(){
-    buttons.forEach(button => button.addEventListener('click', function(e){
-        let playerChoice = this.className;
-        return playerChoice;
-    }))
-}
 
-function decideWinner(computerChoice, playerChoice){
+function decideWinner(computerChoice, playerChoice){ //Decide winner with if else
+    let result;
     if (computerChoice == "rock"){
         if (playerChoice == "rock"){
             result = "draw";
@@ -59,14 +53,22 @@ function decideWinner(computerChoice, playerChoice){
     return result;
 }
 
-function game(){
+function game(playerChoice){ //Play a game with player's input
     let computerChoice = "";
-    let result = "";
+    let result;
     computerChoice = getComputerChoice(computerChoice);
     console.log(computerChoice);
-    let playerChoice = getPlayerChoice();
-    // console.log(playerChoice);
     result = decideWinner(computerChoice, playerChoice);
+    console.log(result);
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', function(e)
+    {
+        let playerChoice = this.className;
+        console.log(playerChoice);
+        game(playerChoice);
+    })  
+}
+)
